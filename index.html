@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christmas Wine Pairing Dinner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#070b16;
+    --night-2:#0d1426;
+    --card:#0f172b;
+    --card-2:#131d36;
+    --gold:#c9a55c;
+    --gold-bright:#e6cb8a;
+    --gold-dim:rgba(201,165,92,.35);
+    --cream:#f3ead7;
+    --muted:#a9a08c;
+    --wine:#8e2433;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(60,80,140,.25), transparent 70%),
+      radial-gradient(ellipse at bottom, rgba(0,0,0,.6), transparent 60%),
+      var(--night);
+    font-family:'Lato',system-ui,sans-serif;
+    color:var(--cream);
+    padding:48px 16px 64px;
+  }
+  /* night sky stars */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,.9) .7px, transparent 1.2px),
+      radial-gradient(circle, rgba(230,203,138,.8) .6px, transparent 1.1px),
+      radial-gradient(circle, rgba(255,255,255,.6) .5px, transparent 1px);
+    background-size:110px 110px, 170px 170px, 60px 60px;
+    background-position:0 0, 60px 90px, 25px 35px;
+  }
+  .card{
+    position:relative;
+    max-width:620px;margin:0 auto;
+    background:linear-gradient(180deg, var(--card-2), var(--card));
+    padding:64px 56px 52px;
+    box-shadow:0 40px 80px rgba(0,0,0,.6), 0 0 0 1px var(--gold-dim);
+    text-align:center;
+  }
+  /* Art Deco double frame with stepped corners */
+  .frame{position:absolute;inset:14px;pointer-events:none;border:1px solid var(--gold);}
+  .frame::before{content:"";position:absolute;inset:5px;border:1px solid var(--gold-dim);}
+  .corner{position:absolute;width:46px;height:46px;pointer-events:none;}
+  .corner svg{width:100%;height:100%;}
+  .c-tl{top:8px;left:8px;}
+  .c-tr{top:8px;right:8px;transform:scaleX(-1);}
+  .c-bl{bottom:8px;left:8px;transform:scaleY(-1);}
+  .c-br{bottom:8px;right:8px;transform:scale(-1,-1);}
+
+  .fan{display:block;margin:0 auto 20px;width:120px;height:auto;}
+  .eyebrow{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:20px;color:var(--muted);margin:0 0 10px;
+  }
+  h1{
+    font-family:'Cinzel',serif;font-weight:500;
+    font-size:38px;line-height:1.2;letter-spacing:.08em;
+    color:var(--gold-bright);margin:0;
+    text-shadow:0 0 24px rgba(201,165,92,.25);
+  }
+  .sub{
+    font-family:'Cinzel',serif;font-weight:400;
+    letter-spacing:.42em;text-transform:uppercase;
+    font-size:12px;color:var(--gold);margin:14px 0 28px;
+  }
+  .rule{display:flex;align-items:center;gap:12px;justify-content:center;margin:28px auto;}
+  .rule span{height:1px;width:96px;background:linear-gradient(90deg,transparent,var(--gold));}
+  .rule span:last-child{background:linear-gradient(90deg,var(--gold),transparent);}
+  .rule svg{width:22px;height:12px;}
+  .lede{
+    font-family:'Cormorant Garamond',serif;font-size:21px;line-height:1.55;
+    color:var(--cream);margin:0 auto;max-width:450px;
+  }
+  .lede em{color:var(--gold-bright);font-style:italic;}
+  .when{
+    font-family:'Cinzel',serif;font-weight:500;letter-spacing:.06em;
+    font-size:22px;color:var(--cream);margin:0;
+  }
+  .time{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:20px;color:var(--gold-bright);margin:4px 0 16px;
+  }
+  .where{
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--muted);line-height:2;margin:0;
+  }
+  .venue{
+    font-family:'Cinzel',serif;font-weight:500;letter-spacing:.14em;
+    font-size:17px;color:var(--gold-bright);margin:0 0 6px;
+  }
+  .meta{
+    display:flex;justify-content:center;gap:34px;flex-wrap:wrap;
+    margin-top:24px;
+    font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);
+  }
+  .meta b{display:block;font-family:'Cinzel',serif;font-weight:500;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+  .meta small{display:block;font-size:14px;color:var(--muted);font-style:italic;}
+  .host{
+    font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.5;
+    color:var(--cream);margin:28px 0 0;
+  }
+  .host .lbl{display:block;font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+  .host .amp{display:block;font-style:italic;color:var(--muted);font-size:16px;}
+
+  /* RSVP */
+  .rsvp{text-align:left;}
+  .rsvp h2{
+    font-family:'Cinzel',serif;font-weight:500;letter-spacing:.2em;
+    font-size:22px;color:var(--gold-bright);text-align:center;margin:0;
+  }
+  .rsvp .by{
+    text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:17px;color:var(--muted);margin:6px 0 24px;
+  }
+  .choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
+  .choice input{position:absolute;opacity:0;pointer-events:none;}
+  .choice label{
+    display:block;text-align:center;cursor:pointer;
+    padding:13px 10px;border:1px solid var(--gold-dim);
+    font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);
+    background:transparent;transition:all .15s ease;
+  }
+  .choice input:checked + label{background:var(--gold);color:var(--night);border-color:var(--gold);}
+  .choice input:focus-visible + label{outline:2px solid var(--gold-bright);outline-offset:2px;}
+  .field{margin-bottom:16px;}
+  .field label{
+    display:block;font-family:'Cinzel',serif;font-size:10.5px;font-weight:500;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:7px;
+  }
+  .field input,.field select,.field textarea{
+    width:100%;font-family:'Lato',sans-serif;font-size:15px;color:var(--cream);
+    padding:11px 12px;border:1px solid rgba(201,165,92,.3);border-radius:0;
+    background:rgba(255,255,255,.03);
+  }
+  .field input::placeholder,.field textarea::placeholder{color:#6f6a5f;}
+  .field select option{background:var(--card);color:var(--cream);}
+  .field textarea{min-height:76px;resize:vertical;}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,165,92,.15);}
+  .row{display:grid;grid-template-columns:1fr 150px;gap:12px;}
+  .hint{font-size:12px;color:var(--muted);margin-top:6px;}
+  .attending-only[hidden]{display:none;}
+  button.submit{
+    display:block;width:100%;margin-top:10px;cursor:pointer;
+    padding:16px;border:1px solid var(--gold);
+    background:linear-gradient(180deg,#d6b46a,#b8914a);color:var(--night);
+    font-family:'Cinzel',serif;font-weight:600;font-size:12.5px;
+    letter-spacing:.32em;text-transform:uppercase;
+  }
+  button.submit:hover{background:linear-gradient(180deg,#e2c27a,#c39c55);}
+  .error{color:#e08a95;font-size:13px;margin:10px 0 0;text-align:center;min-height:1em;}
+
+  .done{display:none;text-align:center;}
+  .done.show{display:block;}
+  .done h3{font-family:'Cinzel',serif;font-weight:500;letter-spacing:.14em;font-size:24px;color:var(--gold-bright);margin:0 0 10px;}
+  .done p{font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.5;margin:0 0 12px;}
+  .done .small{font-family:'Lato',sans-serif;font-size:13px;color:var(--muted);}
+  .done .small strong{color:var(--cream);}
+  .done pre{
+    white-space:pre-wrap;text-align:left;font-family:'Lato',sans-serif;font-size:13.5px;color:var(--cream);
+    background:rgba(255,255,255,.04);border:1px solid var(--gold-dim);padding:14px;margin:14px 0;
+  }
+  .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+  .btn-ghost{
+    cursor:pointer;padding:11px 18px;border:1px solid var(--gold);
+    background:transparent;color:var(--gold-bright);text-decoration:none;
+    font-family:'Cinzel',serif;font-weight:500;font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  }
+  .btn-ghost.primary{background:var(--gold);color:var(--night);}
+  .footer{text-align:center;margin-top:24px;font-family:'Cinzel',serif;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-size:11px;opacity:.8;}
+
+  @media (max-width:560px){
+    body{padding:20px 10px 40px;}
+    .card{padding:56px 26px 40px;}
+    h1{font-size:28px;}
+    .row{grid-template-columns:1fr;}
+    .meta{gap:20px;}
+    .corner{width:34px;height:34px;}
+  }
+</style>
+</head>
+<body>
+
+<main class="card">
+  <div class="frame" aria-hidden="true"></div>
+  <!-- stepped Art Deco corners -->
+  <div class="corner c-tl" aria-hidden="true"><svg viewBox="0 0 46 46"><path d="M2 44 V2 H44 M8 44 V8 H44 M14 30 V14 H30" fill="none" stroke="#c9a55c" stroke-width="1"/><rect x="18" y="18" width="4" height="4" fill="#c9a55c" transform="rotate(45 20 20)"/></svg></div>
+  <div class="corner c-tr" aria-hidden="true"><svg viewBox="0 0 46 46"><path d="M2 44 V2 H44 M8 44 V8 H44 M14 30 V14 H30" fill="none" stroke="#c9a55c" stroke-width="1"/><rect x="18" y="18" width="4" height="4" fill="#c9a55c" transform="rotate(45 20 20)"/></svg></div>
+  <div class="corner c-bl" aria-hidden="true"><svg viewBox="0 0 46 46"><path d="M2 44 V2 H44 M8 44 V8 H44 M14 30 V14 H30" fill="none" stroke="#c9a55c" stroke-width="1"/><rect x="18" y="18" width="4" height="4" fill="#c9a55c" transform="rotate(45 20 20)"/></svg></div>
+  <div class="corner c-br" aria-hidden="true"><svg viewBox="0 0 46 46"><path d="M2 44 V2 H44 M8 44 V8 H44 M14 30 V14 H30" fill="none" stroke="#c9a55c" stroke-width="1"/><rect x="18" y="18" width="4" height="4" fill="#c9a55c" transform="rotate(45 20 20)"/></svg></div>
+
+  <!-- Art Deco fan with a star on top -->
+  <svg class="fan" viewBox="0 0 120 70" aria-hidden="true">
+    <g fill="none" stroke="#c9a55c" stroke-width="1">
+      <path d="M10 64 A50 50 0 0 1 110 64"/>
+      <path d="M22 64 A38 38 0 0 1 98 64"/>
+      <path d="M34 64 A26 26 0 0 1 86 64"/>
+      <path d="M60 64 L60 14 M60 64 L30 24 M60 64 L90 24 M60 64 L16 44 M60 64 L104 44"/>
+      <path d="M6 64 H114"/>
+    </g>
+    <path d="M60 2 L62.4 9.6 L70 12 L62.4 14.4 L60 22 L57.6 14.4 L50 12 L57.6 9.6Z" fill="#e6cb8a"/>
+  </svg>
+
+  <p class="eyebrow">You are cordially invited to</p>
+  <h1>A Christmas<br>Wine Pairing Dinner</h1>
+  <p class="sub">Six Courses Under the Stars</p>
+
+  <p class="lede">Join us on the terrace for seafood and bubbles by candlelight, followed by six small courses, each paired with a favorite wine from Napa and Sonoma.</p>
+
+  <div class="rule" aria-hidden="true"><span></span><svg viewBox="0 0 22 12"><path d="M11 0 L13 6 L11 12 L9 6Z M0 6 H7 M15 6 H22" fill="#c9a55c" stroke="#c9a55c" stroke-width="1"/></svg><span></span></div>
+
+  <p class="when">Saturday, December 19, 2026</p>
+  <p class="time">half past six in the evening</p>
+  <p class="venue">The Crooked Lake Lounge</p>
+  <p class="where">1900 Country Club Drive<br>Eustis, Florida 32726</p>
+
+  <div class="meta">
+    <div><b>Attire</b>Festive cocktail<small>Bring a wrap for the terrace</small></div>
+    <div><b>Guests</b>Twelve<small>Seated together</small></div>
+  </div>
+
+  <p class="host">
+    <span class="lbl">Your Hosts</span>
+    Gary and Kristin Couture
+    <span class="amp">and</span>
+    Phil Ramsey and Tammy Trocino
+  </p>
+
+  <div class="rule" aria-hidden="true"><span></span><svg viewBox="0 0 22 12"><path d="M11 0 L13 6 L11 12 L9 6Z M0 6 H7 M15 6 H22" fill="#c9a55c" stroke="#c9a55c" stroke-width="1"/></svg><span></span></div>
+
+  <section class="rsvp" aria-labelledby="rsvp-title">
+    <form id="rsvpForm" novalidate>
+      <h2 id="rsvp-title">Kindly Reply</h2>
+      <p class="by">by Saturday, the fifth of December</p>
+
+      <div class="choice" role="radiogroup" aria-label="Will you attend?">
+        <input type="radio" name="attending" id="yes" value="yes" checked>
+        <label for="yes">Joyfully accepts</label>
+        <input type="radio" name="attending" id="no" value="no">
+        <label for="no">Regretfully declines</label>
+      </div>
+
+      <div class="field">
+        <label for="names">Your name(s)</label>
+        <input id="names" name="names" type="text" autocomplete="name" placeholder="e.g. Jordan and Alex Smith">
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="email">Your email</label>
+          <input id="email" name="email" type="email" autocomplete="email">
+        </div>
+        <div class="field attending-only">
+          <label for="count">Attending</label>
+          <select id="count" name="count">
+            <option value="2">2 guests</option>
+            <option value="1">1 guest</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field attending-only">
+        <label for="diet">Allergies or dietary needs</label>
+        <input id="diet" name="diet" type="text" placeholder="None">
+        <div class="hint">The evening includes shellfish, so please let us know about any allergies.</div>
+      </div>
+
+      <div class="field">
+        <label for="note">A note to the hosts</label>
+        <textarea id="note" name="note" placeholder="Optional"></textarea>
+      </div>
+
+      <button class="submit" type="submit">Send my reply</button>
+      <p class="error" id="error" role="alert"></p>
+    </form>
+
+    <div class="done" id="done" aria-live="polite">
+      <h3 id="doneTitle">Thank you</h3>
+      <p id="doneMsg"></p>
+      <p class="small">Your email app should open with your reply ready. Press send there to finish. If it didn't open, copy your reply below and email it to <strong>pramsey@think.network</strong>.</p>
+      <pre id="summary"></pre>
+      <div class="btns">
+        <a class="btn-ghost primary" id="mailAgain" href="#">Open email again</a>
+        <button class="btn-ghost" id="copyBtn" type="button">Copy reply</button>
+        <button class="btn-ghost" id="editBtn" type="button">Edit</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<script>
+(function(){
+  var HOST_EMAIL = 'pramsey@think.network';
+  var form = document.getElementById('rsvpForm');
+  var done = document.getElementById('done');
+  var err = document.getElementById('error');
+  var attendingOnly = document.querySelectorAll('.attending-only');
+
+  function attending(){ return document.getElementById('yes').checked; }
+  function syncFields(){
+    attendingOnly.forEach(function(el){ el.hidden = !attending(); });
+  }
+  document.querySelectorAll('input[name="attending"]').forEach(function(r){
+    r.addEventListener('change', syncFields);
+  });
+  syncFields();
+
+  var lastText = '';
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    err.textContent = '';
+    var names = form.names.value.trim();
+    var email = form.email.value.trim();
+    if(!names){ err.textContent = 'Please add your name.'; form.names.focus(); return; }
+    if(email && !/^\S+@\S+\.\S+$/.test(email)){ err.textContent = 'Please check your email address.'; form.email.focus(); return; }
+
+    var yes = attending();
+    var lines = [];
+    lines.push('RSVP: ' + (yes ? 'Joyfully accepts' : 'Regretfully declines'));
+    lines.push('Name(s): ' + names);
+    if(email) lines.push('Email: ' + email);
+    if(yes){
+      lines.push('Attending: ' + form.count.value);
+      lines.push('Allergies or dietary needs: ' + (form.diet.value.trim() || 'None'));
+    }
+    var note = form.note.value.trim();
+    if(note) lines.push('Note: ' + note);
+    lastText = lines.join('\n');
+
+    var subject = 'RSVP: Christmas Wine Pairing Dinner, Dec 19 (' + names + ')';
+    var mailto = 'mailto:' + HOST_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lastText);
+
+    document.getElementById('summary').textContent = lastText;
+    document.getElementById('doneTitle').textContent = yes ? 'Wonderful' : 'You will be missed';
+    document.getElementById('doneMsg').textContent = yes
+      ? 'We look forward to raising a glass with you under the stars on December 19.'
+      : 'Thank you for letting us know. Wishing you a very Merry Christmas.';
+    document.getElementById('mailAgain').setAttribute('href', mailto);
+
+    form.style.display = 'none';
+    done.classList.add('show');
+
+    try { window.location.href = mailto; } catch(_) {}
+  });
+
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    var btn = this;
+    var text = 'To: ' + HOST_EMAIL + '\n' + lastText;
+    try{
+      navigator.clipboard.writeText(text).then(function(){
+        btn.textContent = 'Copied';
+        setTimeout(function(){ btn.textContent = 'Copy reply'; }, 1800);
+      }, function(){ btn.textContent = 'Select text above'; });
+    }catch(_){ btn.textContent = 'Select text above'; }
+  });
+
+  document.getElementById('editBtn').addEventListener('click', function(){
+    done.classList.remove('show');
+    form.style.display = '';
+  });
+})();
+</script>
+</body>
+</html>
